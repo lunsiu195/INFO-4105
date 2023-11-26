@@ -1,0 +1,60 @@
+<!-- searchapp/templates/searchapp/search_results.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a;
+            color: #1a8cff;
+            text-align: center;
+            margin: 50px;
+        }
+
+        h1, h2 {
+            font-weight: 350;
+        }
+
+        h1 {
+            color: #d9d9d9;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-top: 10px;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+
+        a {
+            color: #8c8c8c;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            border: 1px solid #555;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search Results for "{{ query }}"</h1>
+    {% for result in results %}
+        <h2>{{ result.0.title }}</h2>
+        <p>URL: <a href="{{ result.0.url }}" target="_blank">{{ result.0.url }}</a></p>
+        <p>Relevance Score: {{ result.1 }}</p>
+        <hr>
+    {% endfor %}
+</body>
+</html>
+
