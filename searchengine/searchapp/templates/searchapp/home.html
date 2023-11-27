@@ -85,6 +85,9 @@
         <input type="text" name="q" placeholder="Search..." required>
         <button type="submit"><i class='fas fa-search'></i></button>
     </form>
+    <form action="{% url 'searchapp:image_search' %}" method="GET">
+        <button type="submit">Image Search</button>
+    </form>
 </body>
 </html>
 

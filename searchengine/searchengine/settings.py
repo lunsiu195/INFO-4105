@@ -70,6 +70,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries':{
+                'query_path': 'searchapp.server',
+                'score[1]': 'searchapp.server'
+            }
         },
     },
 ]
