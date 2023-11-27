@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    {% load query_path %}
+    {% load static %}
+    <head>
+        <style>
+            body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a;
+            color: #1a8cff;
+            text-align: center;
+            margin: 50px;
+        }
+
+        h1, h2 {
+            font-weight: 350;
+        }
+
+        h1 {
+            color: #d9d9d9;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-top: 10px;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+
+        a {
+            color: #8c8c8c;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            border: 1px solid #555;
+            margin: 20px 0;
+        }
+        </style>
+        </head>
+    <body>
+        <div class="container">
+            <h1>Image Search</h1>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="file" name="query_img"><br>
+                <input type="submit">
+            </form>
+            
+            <h2>Results:</h2>
+            {% for score in scores %}
+            <figure style="float: left; margin-right: 20px; margin-bottom: 20px;">
+                <img src="{% static score.1 %}" height="200px">
+                <figcaption>{{ score.0  }}</figcaption>
+            </figure>
+            {% endfor %}
+        </div>
+    </body>
+</html>
