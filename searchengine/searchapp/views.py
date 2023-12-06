@@ -45,12 +45,10 @@ def image_search(request):
         file = request.FILES["query_img"]
          
         img = Image.open(file)
-        #uploaded_img_path = str(Path("uploaded") /)  + str(file.name)
-        #img.save(uploaded_img_path)
         
         query = fea.extract(img)
         dists = np.linalg.norm(feature - query, axis=1)
-        ids = np.argsort(dists)[:20]
+        ids = np.argsort(dists)[:5]
         scores = [(dists[id], img_paths[id]) for id in ids] 
         context = {'scores': scores}
         
